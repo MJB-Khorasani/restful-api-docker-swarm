@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+    static:
+        image: "nginx:1.15.9"
+        ports:
+            - "publishedPort:80"
+        volumes: 
+            - static:/usr/share/nginx/html
+        deploy:
+            mode: replicated
+            replicas: 1
+            endpoint_mode: vip
+            resources: 
+                limits: 
+                    cpus: "cpu"
+                    memory: ram
+
+volumes:
+    static: {}
